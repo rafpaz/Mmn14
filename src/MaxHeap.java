@@ -1,6 +1,3 @@
-/**
- * Created by Refael_Paz on 24/04/2015.
- */
 import java.util.Scanner;
 
 public class MaxHeap
