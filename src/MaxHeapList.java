@@ -17,5 +17,24 @@ public class MaxHeapList
         m_maxHeapList.add(tmpList);
     }
 
+    public void PrintList()
+    {
+        for(MaxHeap curr_list : m_maxHeapList)
+        {
+            curr_list.print();
+        }
+    }
+
+    public int RemoveMax()
+    {
+        int max_num = m_maxHeapList.get(0).GetMax();
+        int i = 0;
+        for (MaxHeap curr_list : m_maxHeapList)
+        {
+
+        }
+        return i;
+    }
+
 
 }

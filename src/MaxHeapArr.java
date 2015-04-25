@@ -4,10 +4,12 @@
 public class MaxHeapArr
 {
     private MaxHeap[] m_maxHeapArr;
+    private int m_numOfFullHeaps;
 
     public MaxHeapArr(int num_of_heaps)
     {
         m_maxHeapArr = new MaxHeap[num_of_heaps];
+        m_numOfFullHeaps = num_of_heaps;
     }
 
     public void InitializeArr(int current_heap,int[] num_arr)
@@ -24,13 +26,47 @@ public class MaxHeapArr
         m_maxHeapArr[heap_to_print].print();
     }
 
-    public int GetMax(int current_heap)
+    public int RemoveMax(int current_heap)
     {
-        return m_maxHeapArr[current_heap].remove();
+        return m_maxHeapArr[current_heap].removeMax();
     }
 
     public void Insert(int current_heap,int num_to_insert)
     {
         m_maxHeapArr[current_heap].insert(num_to_insert);
+    }
+
+    public int GetTotalMax()
+    {
+        int first_full_heap = GetFirstFullHeap();
+        int max_num = m_maxHeapArr[first_full_heap].GetMax();
+        int max_num_heap = first_full_heap;
+        for (int i = first_full_heap + 1; i < m_maxHeapArr.length; i++)
+        {
+            if(m_maxHeapArr[i].getSize() > 0 && max_num < m_maxHeapArr[i].GetMax())
+            {
+                max_num = m_maxHeapArr[i].GetMax();
+                max_num_heap = i;
+            }
+        }
+        return m_maxHeapArr[max_num_heap].removeMax();
+    }
+
+    private int GetFirstFullHeap()
+    {
+        boolean found = false;
+        int i = 0;
+        while (i < m_maxHeapArr.length && !found)
+        {
+            if (m_maxHeapArr[i].getSize() >= 1)
+            {
+                found = true;
+            }
+            else
+            {
+                i++;
+            }
+        }
+        return i;
     }
 }

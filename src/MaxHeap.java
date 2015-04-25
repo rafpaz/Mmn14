@@ -17,6 +17,10 @@ public class MaxHeap
 
     }
 
+    public int getSize()
+    {
+        return size;
+    }
 
     private int parent(int pos)
     {
@@ -35,7 +39,7 @@ public class MaxHeap
 
     private boolean isLeaf(int pos)
     {
-        if (pos >= (size / 2) && pos <= size)
+        if ( (pos > (size / 2) && pos <= size) || size == 0)
         {
             return true;
         }
@@ -108,13 +112,20 @@ public class MaxHeap
         }
     }
 
-    public int remove()
+    public int removeMax()
     {
         int popped = Heap[FRONT];
         Heap[FRONT] = Heap[size--];
         maxHeapify(FRONT);
         return popped;
     }
+
+    public int GetMax()
+    {
+        return Heap[FRONT];
+    }
+
+
 
 
 }
