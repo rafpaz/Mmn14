@@ -75,7 +75,7 @@ public class MaxHeap
 
     public void insert(int element)
     {
-        Heap[++size] = element + 1; //Remove + 1!!!
+        Heap[++size] = element;
         int current = size;
 
         while (Heap[current] > Heap[parent(current)])
