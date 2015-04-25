@@ -86,7 +86,16 @@ public class MaxHeap
     {
         for (int i = 1; i <= size / 2; i++)
         {
-            System.out.print("PARENT : " + Heap[i] + " LEFT CHILD : " + Heap[2*i] + " RIGHT CHILD :" + Heap[2 * i + 1]);
+            System.out.print("PARENT : " + Heap[i]);
+
+            if (2*i <= size)
+            {
+                System.out.print(" LEFT CHILD : " + Heap[2*i]);
+            }
+            if (2*i +1 <= size)
+            {
+                System.out.print(" RIGHT CHILD :" + Heap[2 * i + 1]);
+            }
             System.out.println();
         }
     }
