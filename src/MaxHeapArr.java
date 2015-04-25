@@ -6,6 +6,14 @@ public class MaxHeapArr
     private MaxHeap[] m_maxHeapArr;
     private int m_numOfFullHeaps;
 
+    public void PrintSortedArray()
+    {
+        while (m_numOfFullHeaps > 0)
+        {
+            System.out.println(GetTotalMax());
+        }
+    }
+
     public MaxHeapArr(int num_of_heaps)
     {
         m_maxHeapArr = new MaxHeap[num_of_heaps];
@@ -49,6 +57,8 @@ public class MaxHeapArr
                 max_num_heap = i;
             }
         }
+        if (m_maxHeapArr[max_num_heap].getSize() == 1)
+            m_numOfFullHeaps--;
         return m_maxHeapArr[max_num_heap].removeMax();
     }
 
