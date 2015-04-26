@@ -1,3 +1,7 @@
+import java.io.File;
+import java.util.Random;
+import java.util.Scanner;
+
 /**
  * Created by Refael_Paz on 25/04/2015.
  */
@@ -6,25 +10,16 @@ class main
 {
     public static void main(String[] args)
     {
-        MaxHeapArr maxHeapArr = new MaxHeapArr(2);
-        int total_nums = 10;
-        int[] num_arr = {1,2,3,4,5,6};
-        int[] num_arr2 = {6,9,-1,7};
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Please enter n and k (space between): ");
+        int n = scanner.nextInt();
+        int k = scanner.nextInt();
 
-        maxHeapArr.InitializeArr(0, num_arr);
-        maxHeapArr.InitializeArr(1, num_arr2);
+        int[] arr = RandomArrayGenerator.GetRandomArray(n);
 
-        for (int i= 0; i < total_nums; i++)
-        {
-            System.out.println(maxHeapArr.GetTotalMax());
-        }
+        MaxHeapArr maxHeapArr = new MaxHeapArr(arr,k);
 
-
-        //maxHeapArr.PrintArr(0);
-
-        //System.out.println(maxHeapArr.GetTotalMax());
-
-
+        maxHeapArr.PrintSortedArray();
 
     }
 

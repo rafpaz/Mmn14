@@ -20,6 +20,26 @@ public class MaxHeapArr
         m_numOfFullHeaps = num_of_heaps;
     }
 
+    public MaxHeapArr(int[] arr,int k)
+    {
+        this(k);
+        int heap_size = arr.length / k;
+        for (int i = 0; i < k - 1; i++)
+        {
+            m_maxHeapArr[i] = new MaxHeap(heap_size);
+            for (int j = i * heap_size; j < i * heap_size + heap_size; j++)
+            {
+                m_maxHeapArr[i].insert(arr[j]);
+            }
+        }
+
+        m_maxHeapArr[k-1] = new MaxHeap(arr.length - (k-1) * heap_size);
+        for (int i = (k-1) * heap_size; i < arr.length; i++)
+        {
+            m_maxHeapArr[k-1].insert(arr[i]);
+        }
+    }
+
     public void InitializeArr(int current_heap,int[] num_arr)
     {
         m_maxHeapArr[current_heap] = new MaxHeap(num_arr.length);
